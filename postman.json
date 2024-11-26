@@ -1,0 +1,113 @@
+{
+    "info": {
+      "name": "Comment Sentiment Analyzer API",
+      "description": "API collection for the multi-platform comment sentiment analyzer",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Health Check",
+        "request": {
+          "method": "GET",
+          "url": {
+            "raw": "{{baseUrl}}/api/health",
+            "host": ["{{baseUrl}}"],
+            "path": ["api", "health"]
+          }
+        }
+      },
+      {
+        "name": "Analyze Comments",
+        "request": {
+          "method": "POST",
+          "url": {
+            "raw": "{{baseUrl}}/api/comments/analyze",
+            "host": ["{{baseUrl}}"],
+            "path": ["api", "comments", "analyze"]
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": {
+              "url": "https://www.youtube.com/watch?v=example",
+              "platform": "youtube"
+            }
+          }
+        }
+      },
+      {
+        "name": "Get Comments",
+        "request": {
+          "method": "GET",
+          "url": {
+            "raw": "{{baseUrl}}/api/comments?url=https://www.youtube.com/watch?v=example&platform=youtube",
+            "host": ["{{baseUrl}}"],
+            "path": ["api", "comments"],
+            "query": [
+              {
+                "key": "url",
+                "value": "https://www.youtube.com/watch?v=example"
+              },
+              {
+                "key": "platform",
+                "value": "youtube"
+              },
+              {
+                "key": "page",
+                "value": "1",
+                "disabled": true
+              },
+              {
+                "key": "limit",
+                "value": "20",
+                "disabled": true
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Get Statistics",
+        "request": {
+          "method": "GET",
+          "url": {
+            "raw": "{{baseUrl}}/api/stats?url=https://www.youtube.com/watch?v=example&platform=youtube",
+            "host": ["{{baseUrl}}"],
+            "path": ["api", "stats"],
+            "query": [
+              {
+                "key": "url",
+                "value": "https://www.youtube.com/watch?v=example"
+              },
+              {
+                "key": "platform",
+                "value": "youtube"
+              },
+              {
+                "key": "startDate",
+                "value": "2024-01-01",
+                "disabled": true
+              },
+              {
+                "key": "endDate",
+                "value": "2024-12-31",
+                "disabled": true
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "variable": [
+      {
+        "key": "baseUrl",
+        "value": "http://localhost:3001",
+        "type": "string"
+      }
+    ]
+  }
